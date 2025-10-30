@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Post Generator - Retro Wave Edition</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body class="iper-futuristic-body"> 
+
+    <header class="header iper-futuristic-header"> 
+        <div class="container header-container">
+            <h1 class="iper-futuristic-title">Social Post Generator</h1> 
+            <p class="subtitle iper-futuristic-subtitle">~ RAG & Gemini - Iper-Futuristic Edition ~</p>
+        </div>
+    </header>
+
+    <div class="container retro-wave-container">
+        
+        <section class="input-section retro-wave-section mb-4">
+            <h2 class="retro-wave-h2">✨ Crea un Nuovo Post ✨</h2>
+            <div class="mb-3">
+                <label for="queryInput" class="form-label retro-wave-label">Query:</label>
+                <textarea class="form-control retro-wave-textarea" id="queryInput" placeholder="Enter your query for a mind-blowing post..." rows="3"></textarea>
+            </div>
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input retro-wave-checkbox" id="llmKnowledgeSwitch">
+                <label class="form-check-label retro-wave-label" for="llmKnowledgeSwitch">Usa LLM Knowledge</label>
+            </div>
+            <div class="d-grid gap-2">
+                <button class="btn retro-wave-button btn-lg" id="generateButton">🚀 Genera Post! 🚀</button>
+            </div>
+        </section>
+
+        <section id="generatedPostSection" style="display:none;" class="container mt-4 generated-post-section retro-wave-section">
+            <h2 class="retro-wave-h2">🔮 Post Generato 🔮</h2>
+            <div id="generatedPost" class="generated-post-div retro-wave-post-div"></div>
+            <div class="d-flex justify-content-end mt-3 button-group">
+                <button id="editPostButton" class="btn retro-wave-button btn-secondary me-2">✍️ Modifica</button>
+                <button id="savePostButton" class="btn retro-wave-button btn-success">💾 Salva Post</button>
+            </div>
+
+            <section id="retrievedChunksSection" style="display:none;" class="mt-4 retrieved-chunks-section retro-wave-section">
+                <h2 class="retro-wave-h2">📚 Chunk Recuperati (RAG-only) 📚</h2>
+                <p id="retrievedChunksPlaceholder" class="retro-wave-placeholder" style="display:block;">Nessun chunk recuperato in modalità LLM Knowledge.</p>
+                <ul class="list-group retro-wave-list-group" id="retrievedChunksList" style="display:none;"></ul>
+            </section>
+        </section>
+
+        <section class="saved-posts-section container mt-5 retro-wave-section">
+            <h2 class="retro-wave-h2">💾 Post Salvati 💾</h2>
+            <ul class="list-group retro-wave-list-group" id="savedPostsList">
+                <!-- Post salvati verranno caricati qui via JavaScript -->
+            </ul>
+        </section>
+    </div>
+
+    <footer class="footer retro-wave-footer">
+        <div class="container">
+            <p class="retro-wave-footer-text">© 2025 Social Post Generator - Retro Wave Edition ✨</p>
+        </div>
+    </footer>
+
+    <!-- Modale Edit Post -->
+    <div class="modal fade retro-wave-modal" id="editPostModal" tabindex="-1" aria-labelledby="editPostModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content retro-wave-modal-content">
+                <div class="modal-header retro-wave-modal-header">
+                    <h5 class="modal-title retro-wave-modal-title" id="editPostModalLabel">Modifica Post ✍️</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body retro-wave-modal-body">
+                    <textarea class="form-control retro-wave-textarea" id="editPostTextarea" rows="5"></textarea>
+                </div>
+                <div class="modal-footer retro-wave-modal-footer">
+                    <button type="button" class="btn retro-wave-button btn-secondary" data-bs-dismiss="modal">Annulla</button>
+                    <button type="button" id="saveEditedPostButton" class="btn retro-wave-button btn-success">Salva Modifiche</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/js/script.js"></script>
+</body>
+</html>
